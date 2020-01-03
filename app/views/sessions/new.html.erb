@@ -1,0 +1,15 @@
+<h1>Please Log In to Access Your Options</h1>
+<div class="flash-messages">
+  <% if flash[:message]%>
+    <h3><em><%= flash[:message] %></em></h3>
+  <% end %>
+</div>
+<%= form_with url: '/sessions' do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit %>
+<% end %>
+
+<p>If you don't have a login you can <%= link_to "create one here", new_user_path %></p>

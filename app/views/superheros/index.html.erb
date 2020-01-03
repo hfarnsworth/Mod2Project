@@ -1,0 +1,13 @@
+<h1>Superheroes</h1>
+
+<ul>
+  <% @superheros.each do |superhero| %>
+    <li>
+      <%= image_tag(superhero.imgurl, height: '100' ) %><%= link_to superhero.name, superhero %>
+    </li>
+  <% end %>
+</ul>
+
+<% if logged_in? %>
+    <p><%= link_to "Click Here", new_superhero_path %> to create a new superhero</p>
+<% end %>

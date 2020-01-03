@@ -1,0 +1,6 @@
+<h1>We need a superhero team to save the day!</h1>
+<em>Use the form to edit the current mission</em>
+
+<%= render 'form' %>
+
+<p><%= link_to "Delete Mission", @mission, data: { confirm: "Are you sure?" }, :method => :delete %></p>

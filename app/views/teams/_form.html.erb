@@ -1,0 +1,17 @@
+<div class="flash-messages">
+  <% if flash[:message]%>
+    <% flash[:message].each do |msg| %>
+      <h3><em><%= msg %></em></h3>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with model: @team do |f| %>
+  <p><%= f.label "Team Name:" %>
+  <%= f.text_field :name %></p>
+
+  <p><%= f.label "Choose your heroes:" %>
+  <%= f.collection_check_boxes :superhero_ids, @superheros, :id, :name, prompt: true %></p>
+
+  <%= f.submit %>
+<% end %>

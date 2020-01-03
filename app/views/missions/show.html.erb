@@ -1,0 +1,20 @@
+<h1>Mission: <%= @mission.name %></h1>
+<h2>Main Threat: <%= @mission.nemesis %></h2>
+<h3>Description:</h3>
+<p><%= @mission.description %></p>
+
+<h2>Teams:</h2>
+<ul>
+<% @mission.teams.each do |team| %>
+    <li><%= link_to team.name, team %></li>
+<% end %>
+</ul>
+
+<% if logged_in? %>
+    <p><%= link_to "Edit or Delete Mission", edit_mission_path(@mission) %></p>
+<% else %>
+    <p> Please Log In if you would like to edit this mission </p>
+<% end %>
+
+
+<p><%= link_to "Back to Mission List", missions_path %></p>

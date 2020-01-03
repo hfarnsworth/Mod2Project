@@ -1,0 +1,20 @@
+<div class="flash-messages">
+  <% if flash[:message]%>
+    <% flash[:message].each do |msg| %>
+      <h3><em><%= msg %></em></h3>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with model: @mission do |f| %>
+  <p><%= f.label "Choose your team:" %>
+  <%= f.collection_check_boxes :team_ids, @teams, :id, :name, prompt: true %></p>
+
+  <p><%= f.label "Operation Codename:" %>
+  <%= f.text_field :name %></p>
+  <p><%= f.label "Please Enter the Enemy or Enemies in this Mission:" %>
+  <%= f.text_field :nemesis %></p>
+  <p><%= f.label "Describe your mission:" %></p>
+  <p><%= f.text_area :description, cols: 100 %></p>
+  <%= f.submit %>
+<% end %>

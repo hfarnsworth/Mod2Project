@@ -1,0 +1,17 @@
+<div class="flash-messages">
+  <% if flash[:message]%>
+    <% flash[:message].each do |msg| %>
+      <h3><em><%= msg %></em></h3>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with model: @superhero do |f| %>
+  <p><%= f.label "Superhero Name:" %>
+  <%= f.text_field :name %></p>
+  <p><%= f.label "Please enter an image url:" %>
+  <%= f.text_field :imgurl %></p>
+  <p><%= f.label "Write a description:" %></p>
+  <p><%= f.text_area :description, cols: 100 %></p>
+  <%= f.submit %>
+<% end %>

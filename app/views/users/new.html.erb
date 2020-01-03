@@ -1,0 +1,9 @@
+<h1>Create your account</h1>
+
+<%= form_with model: @user do |f| %>
+  <p><%= f.label :username %>
+  <%= f.text_field :username %></p>
+  <p><%= f.label :password %>
+  <%= f.password_field :password %></p>
+  <%= f.submit %>
+<% end %>

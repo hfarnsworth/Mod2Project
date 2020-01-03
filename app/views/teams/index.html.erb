@@ -1,0 +1,13 @@
+<h1>Superhero Teams</h1>
+
+<ul>
+  <% @teams.each do |team| %>
+    <li>
+      <%= link_to team.name, team %>
+    </li>
+  <% end %>
+</ul>
+
+<% if logged_in? %>
+    <p><%= link_to "Click Here", new_team_path %> to create a new team</p>
+<% end %>

@@ -1,0 +1,13 @@
+<h1>List of Missions</h1>
+<ul>
+    <% @missions.each do |mission| %>
+        <li>
+            <%= link_to mission.name, mission %>
+        </li>
+    <% end %>
+</ul>
+
+
+<% if logged_in? %>
+    <p><%= link_to "Click Here", new_mission_path %> to create a new mission</p>
+<% end %>

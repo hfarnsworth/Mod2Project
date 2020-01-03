@@ -1,0 +1,27 @@
+<h1><%= @team.name %></h1>
+<h2>Members:</h2>
+<ul>
+    <% @team.superheros.each do |superhero| %>
+      <li>
+        <%= link_to image_tag(superhero.imgurl, height: '200' ), superhero %>
+      </li>
+    <% end %>
+</ul>
+
+
+<% unless @team.missions == [] %>
+    <h3>Missions:</h3>
+    <ul>
+    <% @team.missions.each do |mission| %>
+        <li><%= link_to mission.name, mission %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<% if logged_in? %>
+    <p><%= link_to "Edit or Delete Team", edit_team_path(@team) %></p>
+<% else %>
+    <p> Please Log In if you would like to edit this team </p>
+<% end %>
+
+<p><%= link_to "Return to the Superhero Team List", teams_path %></p>

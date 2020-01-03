@@ -1,0 +1,34 @@
+<img src="<%= @superhero.imgurl %>" >
+<h1><%= @superhero.name %></h1>
+<h2>Description:</h2>
+<% if @superhero.description == "" %>
+    <p>Sorry, no description provided by Marvel, please log in to add your own</p>
+<% else %>
+    <p><%= @superhero.description %></p>
+<% end %>
+
+<% unless @superhero.teams == [] %>
+  <h3>Teams:</h3>
+  <ul>
+    <% @superhero.teams.each do |team| %>
+      <li><%= link_to team.name, team %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless @superhero.missions == [] %>
+  <h3>Missions:</h3>
+  <ul>
+    <% @superhero.missions.each do |mission| %>
+      <li><%= link_to mission.name, mission %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if logged_in? %>
+    <p><%= link_to "Edit or Delete Superhero", edit_superhero_path(@superhero) %></p>
+<% else %>
+    <p> Please Log In if you would like to edit this superhero </p>
+<% end %>
+
+<p><%= link_to "Back to the Superhero SuperList", superheros_path %>

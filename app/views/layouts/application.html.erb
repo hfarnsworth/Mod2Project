@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mod2Project</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div align="center"><h2><%= link_to "Superheroes", superheros_path %>      <%= link_to "Teams", teams_path %>     <%= link_to "Missions", missions_path %></h2></div>
+    <div align="right">
+      <% unless logged_in? %>
+        <h2><%= link_to "Log In or Create New Login", login_path %></h2>
+      <% else %>
+        <h2><%= link_to "User Options", options_path %> <%= link_to "Logout", logout_path, method: :delete %></h2>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>
