@@ -1,4 +1,18 @@
 <h1>We need a superhero to save the day!</h1>
 <em>Fill out the form to create a new superhero</em>
 
-<%= render 'form' %>
+
+
+<h3>Search the Official Marvel Database for you Hero of Choice:</h3>
+    <%= form_tag(new_superhero_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag ("Enter the first letters of a Marvel Character's name") %>
+    <% end %>
+
+    <% if @superheros %>
+        <h4>Click the hero below to create your hero in this database</h4>
+        <% @superheros.each do |superhero| %>
+        <p><%= link_to superhero, superheros_path( name: superhero), method: :post %></p>
+            <p><%#= superhero %></p>
+        <% end %>
+    <% end %>
